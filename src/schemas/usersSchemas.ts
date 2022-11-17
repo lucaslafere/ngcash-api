@@ -3,13 +3,14 @@ import passwordComplexity from 'joi-password-complexity';
 
 const complexityOptions = {
     min: 8,
+    max: 255,
     upperCase: 1,
     numeric: 1,
     requirementCount: 2,
   };
 export const createUserSchema = Joi.object({
     username: Joi.string().min(3).required(),
-    password: passwordComplexity(complexityOptions).required
+    password: passwordComplexity(complexityOptions).required()
   });
   export const signInSchema = Joi.object({
     username: Joi.string().required(),

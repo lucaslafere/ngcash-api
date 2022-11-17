@@ -16,7 +16,7 @@ export async function createUser(UserData: UserData) {
   });
   const result = await usersRepository.insert({
     username: UserData.username,
-    password: UserData.password,
+    password: passwordEncrypter.hashedPassword(UserData.password),
     accountId: createAccount.id,
   });
   if (!result) {
