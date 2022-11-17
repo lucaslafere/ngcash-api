@@ -1,8 +1,7 @@
 import { prisma } from "../database";
-import { AccountData } from "../types/accountType";
 
-export async function insert(AccountData: AccountData) {
-  const result = prisma.accounts.create({ data: AccountData });
+export async function insert(balance: number) {
+  const result = prisma.accounts.create({ data: {balance} });
   return result;
 }
 
@@ -11,6 +10,21 @@ export async function deleteById(id: number) {
     where: {
       id,
     },
+  });
+  return result;
+}
+
+export async function findById(id: number) {
+  const result = prisma.accounts.findUnique({
+    where: {id}
+  });
+  return result
+}
+
+export async function updateBalance(id: number, balance: number) {
+  const result = prisma.accounts.update({
+    where: {id},
+    data: {balance}
   });
   return result;
 }

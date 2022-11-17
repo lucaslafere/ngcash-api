@@ -10,3 +10,8 @@ export async function findByUsername(username: string) {
   const result = await prisma.users.findUnique({ where: { username } });
   return result;
 }
+
+export async function findByUserId(userId: number) {
+  const result = await prisma.users.findUnique({ where: { id: userId } });
+  return result;
+}
