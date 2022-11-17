@@ -32,4 +32,6 @@ model Transactions {
   debitedAccount Accounts @relation(name: "debits", fields: [debitedAccountId], references: [id])
   creditedAccountId Int
   creditedAccount Accounts @relation(name: "credits", fields: [creditedAccountId], references: [id])
+  value Decimal @db.Decimal(10,2)
+  createdAt DateTime
 }
