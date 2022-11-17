@@ -7,7 +7,7 @@ const secret: string = process.env.MY_SECRET_KEY || "placeholder-secret";
 
 export function generateToken (data: any){
     return jwt.sign(data, secret, {
-        expiresIn: '24h',
+        expiresIn: process.env.JWT_EXPIRES_IN,
       });
 }
 
