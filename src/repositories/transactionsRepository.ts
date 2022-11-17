@@ -6,11 +6,11 @@ export async function insert(TransactionData: TransactionData) {
     return result;
   }
 
-export async function getUserTransactions (userId: number) {
+export async function getUserTransactions (accountId: number) {
     const result = prisma.transactions.findMany({
         where: { OR: [
-            {debitedAccountId: userId},
-            {creditedAccountId: userId}
+            {debitedAccountId: accountId},
+            {creditedAccountId: accountId}
         ]}
     })
     return result;

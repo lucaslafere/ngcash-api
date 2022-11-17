@@ -28,3 +28,8 @@ export async function cashOut(username: string, amount: number, userId: number) 
     return newBalance
     
 }
+
+export async function getUserTransactions(accountId: number){
+    const result = await transactionsRepository.getUserTransactions(accountId);
+    return result;
+}
