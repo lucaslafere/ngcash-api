@@ -26,3 +26,13 @@ export async function getUserTransactionsDescending (accountId: number) {
     })
     return result;
 }
+export async function getUserCashOut (accountId: number) {
+    const result = prisma.transactions.findMany({
+        where: {debitedAccountId: accountId}});
+        return result;
+}
+export async function getUserCashIn (accountId: number) {
+    const result = prisma.transactions.findMany({
+        where: {creditedAccountId: accountId}});
+        return result;
+}

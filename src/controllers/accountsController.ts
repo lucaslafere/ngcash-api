@@ -44,3 +44,15 @@ export async function getUserTransactionsDescending(req: Request, res: Response)
   const result = await accountsService.getUserTransactionsDescending(accountId.accountId)
   return res.status(200).send(result);
 }
+export async function getUserCashOut (req: Request, res: Response){
+  const { userId } = res.locals;
+  const accountId = await usersService.findAccountById(userId);
+  const result = await accountsService.getUserCashOut(accountId.accountId)
+  return res.status(200).send(result);
+}
+export async function getUserCashIn (req: Request, res: Response){
+  const { userId } = res.locals;
+  const accountId = await usersService.findAccountById(userId);
+  const result = await accountsService.getUserCashIn(accountId.accountId)
+  return res.status(200).send(result);
+}
