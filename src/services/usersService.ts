@@ -25,3 +25,16 @@ export async function createUser(UserData: UserData) {
   }
   return result;
 }
+export async function signIn(UserData: UserData) {
+    const findExistingUser = await usersRepository.findByUsername(UserData.username);
+    if (
+      !findExistingUser ||
+      !passwordEncrypter.comparePassword(
+        UserData.password,
+        findExistingUser.password
+      )
+    )
+      throw { type: "unauthorized", message: "Unauthorized" };
+    const token = manipulateToken.generateToken(findExistingUser);
+    return token;
+  }
