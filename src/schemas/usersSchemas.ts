@@ -1,4 +1,4 @@
-import joi from 'joi';
+import Joi from 'joi';
 import passwordComplexity from 'joi-password-complexity';
 
 const complexityOptions = {
@@ -7,7 +7,11 @@ const complexityOptions = {
     numeric: 1,
     requirementCount: 2,
   };
-export const createUserSchema = joi.object({
-    username: joi.string().min(3).required(),
+export const createUserSchema = Joi.object({
+    username: Joi.string().min(3).required(),
     password: passwordComplexity(complexityOptions).required
+  });
+  export const signInSchema = Joi.object({
+    username: Joi.string().required(),
+    password: Joi.string().required(),
   });
