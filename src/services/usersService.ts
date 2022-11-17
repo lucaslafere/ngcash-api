@@ -10,7 +10,7 @@ export async function createUser(UserData: UserData) {
   );
   if (findExistingUser)
     throw { type: "conflict", message: "This username is in use" };
-  const defaultBalance = "100";
+  const defaultBalance = "10000";
   const createAccount = await accountsRepository.insert({
     balance: defaultBalance,
   });
