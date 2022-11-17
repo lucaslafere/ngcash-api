@@ -10,10 +10,8 @@ export async function createUser(UserData: UserData) {
   );
   if (findExistingUser)
     throw { type: "conflict", message: "This username is in use" };
-  const defaultBalance = "10000";
-  const createAccount = await accountsRepository.insert({
-    balance: defaultBalance,
-  });
+  const defaultBalance = 10000;
+  const createAccount = await accountsRepository.insert(defaultBalance);
   const result = await usersRepository.insert({
     username: UserData.username,
     password: passwordEncrypter.hashedPassword(UserData.password),
@@ -26,20 +24,26 @@ export async function createUser(UserData: UserData) {
   return result;
 }
 export async function signIn(UserData: UserData) {
-    const findExistingUser = await usersRepository.findByUsername(UserData.username);
-    if (
-      !findExistingUser ||
-      !passwordEncrypter.comparePassword(
-        UserData.password,
-        findExistingUser.password
-      )
+  const findExistingUser = await usersRepository.findByUsername(
+    UserData.username
+  );
+  if (
+    !findExistingUser ||
+    !passwordEncrypter.comparePassword(
+      UserData.password,
+      findExistingUser.password
     )
-      throw { type: "unauthorized", message: "Unauthorized" };
-    const token = manipulateToken.generateToken(findExistingUser);
-    return token;
-  }
+  )
+    throw { type: "unauthorized", message: "Unauthorized" };
+  const token = manipulateToken.generateToken(findExistingUser);
+  return token;
+}
 
-  export async function findAccountId(userId: number) {
-    const result = await usersRepository.findByUserId(userId);
-    return result.accountId;
-  }
+export async function findAccountById(userId: number) {
+  const result = await usersRepository.findByUserId(userId);
+  return result;
+}
+export async function findUserByUsername (username: string) {
+  const result = await usersRepository.findByUsername(username);
+  return result
+}

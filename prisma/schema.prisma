@@ -20,7 +20,7 @@ model Users {
 
 model Accounts {
   id Int @id @default(autoincrement())
-  balance String
+  balance Decimal @db.Decimal(10,2)
   debits Transactions[] @relation("debits")
   credits Transactions[] @relation("credits")
   users Users[]
