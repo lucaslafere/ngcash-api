@@ -1,3 +1,3 @@
 import { Transactions } from '@prisma/client';
 
-export type TransactionData = Omit <Transactions, 'id'>
+export type TransactionData = Omit <Transactions, 'id' | 'createdAt'>

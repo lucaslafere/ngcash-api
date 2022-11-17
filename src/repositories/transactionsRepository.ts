@@ -11,7 +11,7 @@ export async function getUserTransactions (accountId: number) {
         where: { OR: [
             {debitedAccountId: accountId},
             {creditedAccountId: accountId}
-        ]}
+        ]},
     })
     return result;
 }

@@ -1,6 +1,7 @@
 import * as accountsRepository from '../repositories/accountsRepository';
 import * as usersService from '../services/usersService';
 import * as transactionsRepository from '../repositories/transactionsRepository'
+import { Prisma } from '@prisma/client';
 
 export async function findById(id: number){
     const result = await accountsRepository.findById(id);
@@ -24,7 +25,7 @@ export async function cashOut(username: string, amount: number, userId: number) 
     const receiverBalance = await findById(findReceiverAccount.id);
     const newReceiverBalance = (+receiverBalance + amount);
     await accountsRepository.updateBalance(findReceiverAccount.id, newReceiverBalance)
-    await transactionsRepository.insert({debitedAccountId: findAccount.accountId, creditedAccountId: findReceiverAccount.id, value: amount})
+    await transactionsRepository.insert({debitedAccountId: findAccount.accountId, creditedAccountId: findReceiverAccount.id, value: new Prisma.Decimal(amount)})
     return newBalance
     
 }
