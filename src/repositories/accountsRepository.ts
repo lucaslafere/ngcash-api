@@ -14,3 +14,10 @@ export async function deleteById(id: number) {
   });
   return result;
 }
+
+export async function findById(id: number) {
+  const result = prisma.accounts.findUnique({
+    where: {id}
+  });
+  return result;
+}

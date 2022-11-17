@@ -38,3 +38,8 @@ export async function signIn(UserData: UserData) {
     const token = manipulateToken.generateToken(findExistingUser);
     return token;
   }
+
+  export async function findAccountId(userId: number) {
+    const result = await usersRepository.findByUserId(userId);
+    return result.accountId;
+  }
