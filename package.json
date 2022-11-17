@@ -7,7 +7,10 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/src/server.js",
+    "dev": "dotenv -e .env.test nodemon src/server.ts"
   },
   "keywords": [],
   "author": "",
