@@ -24,7 +24,7 @@ export async function cashOut(username: string, amount: number, userId: number) 
     const receiverBalance = await findById(findReceiverAccount.id);
     const newReceiverBalance = (+receiverBalance + amount);
     await accountsRepository.updateBalance(findReceiverAccount.id, newReceiverBalance)
-    await transactionsRepository.insert({debitedAccountId: findAccount.accountId, creditedAccountId: findReceiverAccount.id})
+    await transactionsRepository.insert({debitedAccountId: findAccount.accountId, creditedAccountId: findReceiverAccount.id, value: amount})
     return newBalance
     
 }

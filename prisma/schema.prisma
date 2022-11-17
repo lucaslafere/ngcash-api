@@ -33,5 +33,5 @@ model Transactions {
   creditedAccountId Int
   creditedAccount Accounts @relation(name: "credits", fields: [creditedAccountId], references: [id])
   value Decimal @db.Decimal(10,2)
-  createdAt DateTime
+  createdAt DateTime @default(now())
 }
