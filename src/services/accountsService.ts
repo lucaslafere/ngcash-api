@@ -30,7 +30,11 @@ export async function cashOut(username: string, amount: number, userId: number) 
     
 }
 
-export async function getUserTransactions(accountId: number){
-    const result = await transactionsRepository.getUserTransactions(accountId);
+export async function getUserTransactionsAscending(accountId: number){
+    const result = await transactionsRepository.getUserTransactionsAscending(accountId);
+    return result;
+}
+export async function getUserTransactionsDescending(accountId: number){
+    const result = await transactionsRepository.getUserTransactionsDescending(accountId);
     return result;
 }

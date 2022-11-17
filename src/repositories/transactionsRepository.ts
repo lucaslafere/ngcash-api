@@ -6,12 +6,23 @@ export async function insert(TransactionData: TransactionData) {
     return result;
   }
 
-export async function getUserTransactions (accountId: number) {
+export async function getUserTransactionsAscending (accountId: number) {
     const result = prisma.transactions.findMany({
         where: { OR: [
             {debitedAccountId: accountId},
             {creditedAccountId: accountId}
         ]},
+        orderBy: {createdAt: 'asc'}
+    })
+    return result;
+}
+export async function getUserTransactionsDescending (accountId: number) {
+    const result = prisma.transactions.findMany({
+        where: { OR: [
+            {debitedAccountId: accountId},
+            {creditedAccountId: accountId}
+        ]},
+        orderBy: {createdAt: 'desc'}
     })
     return result;
 }

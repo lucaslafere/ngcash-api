@@ -32,9 +32,15 @@ export async function cashOut(req: Request, res: Response) {
   return res.status(200).send("OK");
 }
 
-export async function getUserTransactions(req: Request, res: Response) {
+export async function getUserTransactionsAscending(req: Request, res: Response) {
     const { userId } = res.locals;
     const accountId = await usersService.findAccountById(userId);
-    const result = await accountsService.getUserTransactions(accountId.accountId)
+    const result = await accountsService.getUserTransactionsAscending(accountId.accountId)
     return res.status(200).send(result);
+}
+export async function getUserTransactionsDescending(req: Request, res: Response) {
+  const { userId } = res.locals;
+  const accountId = await usersService.findAccountById(userId);
+  const result = await accountsService.getUserTransactionsDescending(accountId.accountId)
+  return res.status(200).send(result);
 }

@@ -6,6 +6,7 @@ const accountsRouter = Router();
 
 accountsRouter.get('/account', validateToken, accountsController.getBalance);
 accountsRouter.put('/cash-out', validateToken, accountsController.cashOut)
-accountsRouter.get('/transactions', validateToken, accountsController.getUserTransactions)
+accountsRouter.get('/transactions-old', validateToken, accountsController.getUserTransactionsAscending)
+accountsRouter.get('/transactions-new', validateToken, accountsController.getUserTransactionsDescending)
 
 export default accountsRouter
