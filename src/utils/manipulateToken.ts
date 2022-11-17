@@ -6,7 +6,9 @@ dotenv.config();
 const secret: string = process.env.MY_SECRET_KEY || "placeholder-secret";
 
 export function generateToken (data: any){
-    return jwt.sign(data, secret);
+    return jwt.sign(data, secret, {
+        expiresIn: '24h',
+      });
 }
 
 export function decryptToken (token: any){
