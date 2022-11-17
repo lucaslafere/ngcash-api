@@ -11,4 +11,3 @@ export const createUserSchema = joi.object({
     username: joi.string().min(3).required(),
     password: passwordComplexity(complexityOptions).required
   });
-
