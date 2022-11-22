@@ -28,6 +28,7 @@ O objetivo é possibilitar que usuários da NG consigam realizar transferências
 - Layered architecture
 - Criptografia de dados sensíveis
 - Docker
+- Prisma ORM
 
 ***
 
