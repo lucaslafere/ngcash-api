@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as accountsService from "../services/transactionsService";
+import * as transactionsService from "../services/transactionsService";
 import * as usersService from "../services/usersService";
 import { cashOutSchema } from "../schemas/cashOutSchema";
 
@@ -11,7 +11,7 @@ export interface iCashOut {
 export async function getBalance(req: Request, res: Response) {
   const { userId } = res.locals;
   const accountId = await usersService.findAccountById(userId);
-  const balance = await accountsService.findById(accountId.accountId);
+  const balance = await transactionsService.findById(accountId.accountId);
   return res.status(200).send(balance);
 }
 
@@ -24,7 +24,7 @@ export async function cashOut(req: Request, res: Response) {
   if (cashOutData.username === senderUsername.username)
     throw { type: "generic", message: "You cant cash-out to yourself" };
 
-  const result = await accountsService.cashOut(
+  const result = await transactionsService.cashOut(
     cashOutData.username,
     cashOutData.amount,
     userId
@@ -35,48 +35,48 @@ export async function cashOut(req: Request, res: Response) {
 export async function getUserTransactionsAscending(req: Request, res: Response) {
     const { userId } = res.locals;
     const accountId = await usersService.findAccountById(userId);
-    const result = await accountsService.getUserTransactionsAscending(accountId.accountId)
+    const result = await transactionsService.getUserTransactionsAscending(accountId.accountId)
     return res.status(200).send(result);
 }
 export async function getUserTransactionsDescending(req: Request, res: Response) {
   const { userId } = res.locals;
   const accountId = await usersService.findAccountById(userId);
-  const result = await accountsService.getUserTransactionsDescending(accountId.accountId)
+  const result = await transactionsService.getUserTransactionsDescending(accountId.accountId)
   return res.status(200).send(result);
 }
 export async function getUserCashOut (req: Request, res: Response){
   const { userId } = res.locals;
   const accountId = await usersService.findAccountById(userId);
-  const result = await accountsService.getUserCashOut(accountId.accountId)
+  const result = await transactionsService.getUserCashOut(accountId.accountId)
   return res.status(200).send(result);
 }
 export async function getUserCashOutAscending (req: Request, res: Response){
   const { userId } = res.locals;
   const accountId = await usersService.findAccountById(userId);
-  const result = await accountsService.getUserCashOutAscending(accountId.accountId)
+  const result = await transactionsService.getUserCashOutAscending(accountId.accountId)
   return res.status(200).send(result);
 }
 export async function getUserCashOutDescending (req: Request, res: Response){
   const { userId } = res.locals;
   const accountId = await usersService.findAccountById(userId);
-  const result = await accountsService.getUserCashOutDescending(accountId.accountId)
+  const result = await transactionsService.getUserCashOutDescending(accountId.accountId)
   return res.status(200).send(result);
 }
 export async function getUserCashIn (req: Request, res: Response){
   const { userId } = res.locals;
   const accountId = await usersService.findAccountById(userId);
-  const result = await accountsService.getUserCashIn(accountId.accountId)
+  const result = await transactionsService.getUserCashIn(accountId.accountId)
   return res.status(200).send(result);
 }
 export async function getUserCashInAscending (req: Request, res: Response){
   const { userId } = res.locals;
   const accountId = await usersService.findAccountById(userId);
-  const result = await accountsService.getUserCashInAscending(accountId.accountId)
+  const result = await transactionsService.getUserCashInAscending(accountId.accountId)
   return res.status(200).send(result);
 }
 export async function getUserCashInDescending (req: Request, res: Response){
   const { userId } = res.locals;
   const accountId = await usersService.findAccountById(userId);
-  const result = await accountsService.getUserCashInDescending(accountId.accountId)
+  const result = await transactionsService.getUserCashInDescending(accountId.accountId)
   return res.status(200).send(result);
 }

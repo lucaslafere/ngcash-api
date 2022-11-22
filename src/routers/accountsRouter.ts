@@ -1,9 +1,9 @@
 import { Router } from "express";
-import * as accountsController from '../controllers/transactionsController';
+import * as transactionsController from '../controllers/transactionsController';
 import { validateToken } from "../middlewares/validateTokenMiddleware";
 
 const accountsRouter = Router();
 
-accountsRouter.get('/account', validateToken, accountsController.getBalance);
+accountsRouter.get('/account', validateToken, transactionsController.getBalance);
 
 export default accountsRouter
