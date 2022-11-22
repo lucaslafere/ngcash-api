@@ -17,5 +17,6 @@ export async function validateToken(req: Request, res: Response, next: NextFunct
     const findExistingUser = await usersRepository.findByUsername(userData.username);
     if (!findExistingUser) throw {type: 'not-found', message: "user not found"};
     res.locals.userId = userData.id;
+
     next();
 }
