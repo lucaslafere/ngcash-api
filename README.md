@@ -142,7 +142,7 @@ GET /transactions/cash-out/old (autenticada)
     - body: {}
 ```
 ```yml
-GET /transactions/cash-out/old (autenticada)
+GET /transactions/cash-out/new (autenticada)
     - Lista todas as transações de cash-out (transferências realizadas) do usuário logado, ordenadas das mais novas para as mais antigas.
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
@@ -160,7 +160,7 @@ GET /transactions/cash-in/old (autenticada)
     - body: {}
 ```
 ```yml
-GET /transactions/cash-in/old (autenticada)
+GET /transactions/cash-in/new (autenticada)
     - Lista todas as transações de cash-in (transferências recebidas) do usuário logado, ordenadas das mais novas para as mais antigas.
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
