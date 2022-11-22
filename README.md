@@ -10,7 +10,7 @@
 </p>
 
 
-##  :clipboard: Description
+##  :clipboard: Descrição
 
 Aplicativo criado como teste técnico da NG.Cash, aplicativo financeiro da Nova Geração!
 
@@ -64,15 +64,10 @@ git clone https://github.com/lucaslafere/ngcash-api
 ```
 Depois disso, você precisará construir a imagem dos containers necessários para a aplicação. (Tenha certeza de que possui a última versão estável do [Docker](https://docs.docker.com/compose/install/) e [Docker-Compose](https://docs.docker.com/compose/install/) instalados em seu computador).
 
-Após verificar/instalar o Docker, rode o comando que constrói as imagens:
+Após verificar/instalar o Docker, rode o comando que constrói as imagens e sobe a aplicação:
 
 ```
-docker-compose build
-```
-
-Quando finalizado, apenas inicialize a aplicação, com o comando:
-```
-docker-compose up
+docker-compose up --build
 ```
 
  ## :rocket: Rotas
