@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as accountsService from "../services/accountsService";
+import * as accountsService from "../services/transactionsService";
 import * as usersService from "../services/usersService";
 import { cashOutSchema } from "../schemas/cashOutSchema";
 

@@ -1,5 +1,5 @@
 import * as accountsRepository from '../repositories/accountsRepository';
-import * as usersService from '../services/usersService';
+import * as usersService from './usersService';
 import * as transactionsRepository from '../repositories/transactionsRepository'
 import { Prisma } from '@prisma/client';
 
