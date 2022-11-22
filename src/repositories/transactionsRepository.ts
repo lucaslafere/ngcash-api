@@ -36,3 +36,27 @@ export async function getUserCashIn (accountId: number) {
         where: {creditedAccountId: accountId}});
         return result;
 }
+export async function getUserCashOutAscending (accountId: number) {
+    const result = prisma.transactions.findMany({
+        where: {debitedAccountId: accountId},
+        orderBy: {createdAt: 'asc'}});
+        return result;
+}
+export async function getUserCashOutDescending (accountId: number) {
+    const result = prisma.transactions.findMany({
+        where: {debitedAccountId: accountId},
+        orderBy: {createdAt: 'desc'}});
+        return result;
+}
+export async function getUserCashInAscending (accountId: number) {
+    const result = prisma.transactions.findMany({
+        where: {creditedAccountId: accountId},
+        orderBy: {createdAt: 'asc'}});
+        return result;
+}
+export async function getUserCashInDescending (accountId: number) {
+    const result = prisma.transactions.findMany({
+        where: {creditedAccountId: accountId},
+        orderBy: {createdAt: 'desc'}});
+        return result;
+}

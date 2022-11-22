@@ -42,6 +42,22 @@ export async function getUserCashOut(accountId:number) {
     const result = await transactionsRepository.getUserCashOut(accountId);
     return result;
 }
+export async function getUserCashOutAscending(accountId:number) {
+    const result = await transactionsRepository.getUserCashOutAscending(accountId);
+    return result;
+}
+export async function getUserCashOutDescending(accountId:number) {
+    const result = await transactionsRepository.getUserCashOutDescending(accountId);
+    return result;
+}
+export async function getUserCashInAscending(accountId:number) {
+    const result = await transactionsRepository.getUserCashInAscending(accountId);
+    return result;
+}
+export async function getUserCashInDescending(accountId:number) {
+    const result = await transactionsRepository.getUserCashInDescending(accountId);
+    return result;
+}
 export async function getUserCashIn(accountId:number) {
     const result = await transactionsRepository.getUserCashIn(accountId);
     return result;

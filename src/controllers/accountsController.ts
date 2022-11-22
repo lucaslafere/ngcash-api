@@ -50,9 +50,33 @@ export async function getUserCashOut (req: Request, res: Response){
   const result = await accountsService.getUserCashOut(accountId.accountId)
   return res.status(200).send(result);
 }
+export async function getUserCashOutAscending (req: Request, res: Response){
+  const { userId } = res.locals;
+  const accountId = await usersService.findAccountById(userId);
+  const result = await accountsService.getUserCashOutAscending(accountId.accountId)
+  return res.status(200).send(result);
+}
+export async function getUserCashOutDescending (req: Request, res: Response){
+  const { userId } = res.locals;
+  const accountId = await usersService.findAccountById(userId);
+  const result = await accountsService.getUserCashOutDescending(accountId.accountId)
+  return res.status(200).send(result);
+}
 export async function getUserCashIn (req: Request, res: Response){
   const { userId } = res.locals;
   const accountId = await usersService.findAccountById(userId);
   const result = await accountsService.getUserCashIn(accountId.accountId)
+  return res.status(200).send(result);
+}
+export async function getUserCashInAscending (req: Request, res: Response){
+  const { userId } = res.locals;
+  const accountId = await usersService.findAccountById(userId);
+  const result = await accountsService.getUserCashInAscending(accountId.accountId)
+  return res.status(200).send(result);
+}
+export async function getUserCashInDescending (req: Request, res: Response){
+  const { userId } = res.locals;
+  const accountId = await usersService.findAccountById(userId);
+  const result = await accountsService.getUserCashInDescending(accountId.accountId)
   return res.status(200).send(result);
 }
